@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import * as AnimaTable from "react-native-animatable";
 import { icons } from "../constants";
+import { ResizeMode, Video } from "expo-av";
 
 const zoomIn = {
   0: {
@@ -36,7 +37,13 @@ const TrendingItem = ({ activeItem, item }) => {
       duration={1000}
     >
       {play ? (
-        <Text className="text-white">Playing</Text>
+        <Video
+          source={{ uri: item.video }}
+          className="w-52 h-72 rounded-[35px] mt-3 bg-white/10"
+          resizeMode={ResizeMode.CONTAIN}
+          useNativeControls
+          shouldPlay
+        />
       ) : (
         <TouchableOpacity
           className="relative justify-center items-center"
@@ -47,6 +54,9 @@ const TrendingItem = ({ activeItem, item }) => {
             source={{ uri: item.thumbnail }}
             className="w-52 h-72 rounded-[35px] my-5 overflow-hidden shadow-lg  shadow-black/40"
             resizeMode="cover"
+            onPlaybackStatusUpdate={(status) => {
+              setPlay(false);
+            }}
           />
           <Image
             source={icons.play}
@@ -75,7 +85,7 @@ const Trending = ({ posts }) => {
       horizontal
       onViewableItemsChanged={onViewableItemsChanged}
       viewabilityConfig={{ itemVisiblePercentThreshold: 70 }}
-      contentOffset={{x: 170}}
+      contentOffset={{ x: 170 }}
     />
   );
 };
