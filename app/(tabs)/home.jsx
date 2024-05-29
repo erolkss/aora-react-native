@@ -38,6 +38,8 @@ const Home = () => {
         renderItem={({ item }) => (
           <VideoCard video={item}/>
         )}
+
+
         ListHeaderComponent={() => (
           <View className="my-6 px-4 space-y-6">
             <View className="justify-between items-start flex-row mb-5">
@@ -67,12 +69,7 @@ const Home = () => {
             </View>
           </View>
         )}
-        ListEmptyComponent={() => (
-          <EmptyState
-            title="No videos found"
-            subtitle="Be the first one to upload video"
-          />
-        )}
+        
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
