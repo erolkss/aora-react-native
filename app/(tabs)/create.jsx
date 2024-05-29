@@ -16,6 +16,7 @@ import * as ImagePicker from "expo-image-picker";
 import { router } from "expo-router";
 import { createVideo } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import { useTranslation } from "react-i18next";
 
 const Create = () => {
   const { user } = useGlobalContext();
@@ -28,7 +29,10 @@ const Create = () => {
   });
   const openPicker = async (selectType) => {
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: selectType === 'image' ? ImagePicker.MediaTypeOptions.Images : ImagePicker.MediaTypeOptions.Videos,
+      mediaTypes:
+        selectType === "image"
+          ? ImagePicker.MediaTypeOptions.Images
+          : ImagePicker.MediaTypeOptions.Videos,
       aspect: [4, 3],
       quality: 1,
     });
@@ -70,20 +74,22 @@ const Create = () => {
       setUploading(false);
     }
   };
+
+  const { t, i18n } = useTranslation();
   return (
     <SafeAreaView className="bg-primary h-full pt-10">
       <ScrollView className="px-4 my-6">
-        <Text className="text-2xl text-white font-psemibold">Upload Video</Text>
+        <Text className="text-2xl text-white font-psemibold">{t("Upload Video")}</Text>
         <FormField
-          title="Video Title"
+          title={t("Video Title")}
           value={form.title}
-          placeholder="Give your video a catch title..."
+          placeholder={t("Give your video a catch title...")}
           handleChangeText={(e) => setForm({ ...form, title: e })}
           otherStyles="mt-10"
         />
         <View className="mt-7 space-y-2">
           <Text className="text-base text-gray-100 font-pmedium">
-            Upload Video
+            {t("Upload Video")}
           </Text>
           <TouchableOpacity onPress={() => openPicker("video")}>
             {form.video ? (
@@ -107,7 +113,7 @@ const Create = () => {
         </View>
         <View className="mt-7 space-y-2">
           <Text className="text-base text-gray-100 font-pmedium">
-            Thumbnail Image
+            {t("Thumbnail Image")}
           </Text>
           <TouchableOpacity onPress={() => openPicker("image")}>
             {form.thumbnail ? (
@@ -124,7 +130,7 @@ const Create = () => {
                   className="w-5 h-5"
                 />
                 <Text className="text-sm tex-gray-100 font-pmedium">
-                  Choose a file
+                  {t("Choose a file")}
                 </Text>
               </View>
             )}
@@ -133,12 +139,12 @@ const Create = () => {
         <FormField
           title="AI Prompt"
           value={form.prompt}
-          placeholder="The prompt  you used to create this video"
+          placeholder={t("The prompt  you used to create this video")}
           handleChangeText={(e) => setForm({ ...form, prompt: e })}
           otherStyles="mt-7"
         />
         <CustomButton
-          title="Submit & Publish"
+          title={t("Submit & Publish")}
           handlePress={submit}
           containerStyles="mt-7"
           isLoading={uploading}

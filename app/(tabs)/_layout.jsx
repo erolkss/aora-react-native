@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native";
 import { Tabs } from "expo-router";
 import { icons } from "../../constants";
+import { useTranslation } from "react-i18next";
 
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
@@ -20,6 +21,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
   );
 };
 const TabsLayout = () => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <Tabs
@@ -44,7 +46,7 @@ const TabsLayout = () => {
               <TabIcon
                 icon={icons.home}
                 color={color}
-                name="Home"
+                name={t("Home")}
                 focused={focused}
               />
             ),
@@ -59,7 +61,7 @@ const TabsLayout = () => {
               <TabIcon
                 icon={icons.bookmark}
                 color={color}
-                name="Bookmark"
+                name={t("Bookmark")}
                 focused={focused}
               />
             ),
@@ -74,7 +76,7 @@ const TabsLayout = () => {
               <TabIcon
                 icon={icons.plus}
                 color={color}
-                name="Create"
+                name={t("Create")}
                 focused={focused}
               />
             ),
@@ -89,7 +91,7 @@ const TabsLayout = () => {
               <TabIcon
                 icon={icons.profile}
                 color={color}
-                name="Profile"
+                name={t("Profile")}
                 focused={focused}
               />
             ),

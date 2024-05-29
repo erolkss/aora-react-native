@@ -9,9 +9,11 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 import { icons } from "../../constants";
 import InfoBox from "../../components/InfoBox";
 import { router } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
+  const { t, i18n } = useTranslation();
   const { data: posts } = useAppWrite(() => getUserPosts(user.$id));
 
   const logout = async () => {
@@ -53,13 +55,13 @@ const Profile = () => {
             <View className="mt-5 flex-row">
               <InfoBox
                 title={posts.length || 0}
-                subtitle="Posts"
+                subtitle={t("Posts")}
                 containerStyles="mr-10 ml-10"
                 titleStyles="text-xl"
               />
               <InfoBox
                 title="1.2k"
-                subtitle="Followers"
+                subtitle={t("Followers")}
                 containerStyles="mr-10"
                 titleStyles="text-xl"
               />

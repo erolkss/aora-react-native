@@ -16,6 +16,7 @@ import useAppWrite from "../../lib/useAppWrite";
 import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import VideoCard from "../../components/VideoCard";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
@@ -25,10 +26,11 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
-    // re call videos -> if any new videos appeard
     await refetch();  
     setRefreshing(false);
   };
+
+  const { t, i18n } = useTranslation();
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -45,7 +47,7 @@ const Home = () => {
             <View className="justify-between items-start flex-row mb-5">
               <View>
                 <Text className="font-pmedium text-sm text-gray-100">
-                  Welcome Back,
+                  {t("Welcome Back,")}
                 </Text>
                 <Text className="text-2xl font-psemibold text-white">
                   {user?.username}
@@ -63,7 +65,7 @@ const Home = () => {
 
             <View className="w-full flex-1 pt-5 pb-8">
               <Text className="text-gray-100 text-lg  font-pregular mb-3">
-                Latest Videos
+                {t("Latest Videos")}
               </Text>
               <Trending posts={latestPosts ?? []} />
             </View>

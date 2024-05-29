@@ -7,8 +7,13 @@ import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 import { createUser } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import { useTranslation } from "react-i18next";
+
+
 
 const SignUp = () => {
+  
+  const { t, i18n } = useTranslation();
   const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const [form, setForm] = useState({
@@ -47,10 +52,10 @@ const SignUp = () => {
             className="w-[115px] h-[35px]"
           />
           <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
-            Sign Up to Aora
+            {t("Sign Up to Aora")}
           </Text>
           <FormField
-            title="Username"
+            title={t("Username")}
             value={form.username}
             handleChangeText={(e) =>
               setForm({
@@ -73,7 +78,7 @@ const SignUp = () => {
             keyboardType="email-address"
           />
           <FormField
-            title="Password"
+            title={t("Password")}
             value={form.password}
             handleChangeText={(e) =>
               setForm({
@@ -84,20 +89,20 @@ const SignUp = () => {
             otherStyles="mt-7"
           />
           <CustomButton
-            title="Sign In"
+            title={t("Sign Up")}
             handlePress={submit}
             containerStyles="mt-7"
             isLoading={isSubmitting}
           />
           <View className="justify-center pt-5 flex-row gap-2">
             <Text className="text-lg text-gray-100 font-pregular">
-              Have an account already?
+              {t("Have an account already?")}
             </Text>
             <Link
               href="/sign-in"
               className="text-lg font-psemibold text-secondary"
             >
-              Sign In
+              {t("Sign In")}
             </Link>
           </View>
         </View>
