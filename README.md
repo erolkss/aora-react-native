@@ -47,10 +47,9 @@ Para fazer o Back-end foi utilizado a versão gratuita do **AppWrite** que é um
 
 ### Tela para fazer Upload de um Vídeo
 
-
+<div align="center">
 https://github.com/erolkss/aora-react-native/assets/102766134/f58cf1a4-937f-4971-9b50-1f621834e5b9
-
-
+</div>
 
 
 ### Tela do Perfil ou Profile
