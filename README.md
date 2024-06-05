@@ -48,9 +48,8 @@ Para fazer o Back-end foi utilizado a versão gratuita do **AppWrite** que é um
 ### Tela para fazer Upload de um Vídeo
 
 <div align="center">
-https://github.com/erolkss/aora-react-native/assets/102766134/f58cf1a4-937f-4971-9b50-1f621834e5b9
+  <img src="./assets/images/readme-images/3 - Create Video.jpg" alt="drawing" width="200" />
 </div>
-
 
 ### Tela do Perfil ou Profile
 
@@ -61,10 +60,9 @@ https://github.com/erolkss/aora-react-native/assets/102766134/f58cf1a4-937f-4971
 ## Video de Demostração do funcionamento da aplicação
 
 <div align="center">
-    <video width="520" height="370" controls>
-        <source src="./assets/images/readme-images/Aora.mp4" type="video/mp4">
-    </video>
+https://github.com/erolkss/aora-react-native/assets/102766134/f58cf1a4-937f-4971-9b50-1f621834e5b9
 </div>
+
 &nbsp;
 
 ## Tecnologias Usadas
